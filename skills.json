@@ -1,0 +1,291 @@
+
+{
+  "Data Analyst": [
+    "Python",
+    "SQL",
+    "Excel",
+    "Pandas",
+    "NumPy",
+    "Statistics",
+    "Data Cleaning",
+    "EDA",
+    "Data Visualization",
+    "Tableau",
+    "Power BI",
+    "Matplotlib",
+    "Seaborn"
+  ],
+
+  "Data Scientist": [
+    "Python",
+    "SQL",
+    "Pandas",
+    "NumPy",
+    "Statistics",
+    "Machine Learning",
+    "Scikit-learn",
+    "Feature Engineering",
+    "Data Visualization",
+    "Model Evaluation",
+    "Matplotlib",
+    "Seaborn"
+  ],
+
+  "Data Engineer": [
+    "Python",
+    "SQL",
+    "ETL",
+    "PostgreSQL",
+    "AWS",
+    "Apache Airflow",
+    "Data Modeling",
+    "Data Warehousing",
+    "Apache Spark",
+    "Docker",
+    "Linux",
+    "Data Pipelines"
+  ],
+
+  "Business Analyst": [
+    "Excel",
+    "SQL",
+    "Power BI",
+    "Tableau",
+    "Business Requirements",
+    "Data Analysis",
+    "Communication",
+    "Statistics",
+    "Data Visualization",
+    "Documentation",
+    "Stakeholder Management"
+  ],
+
+  "Python Developer": [
+    "Python",
+    "OOP",
+    "Git",
+    "SQL",
+    "REST APIs",
+    "Testing",
+    "Debugging",
+    "Flask",
+    "Django",
+    "SQLite",
+    "Virtual Environments"
+  ],
+
+  "Frontend Developer": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Bootstrap",
+    "Git",
+    "REST APIs",
+    "Responsive Design",
+    "TypeScript",
+    "Browser Developer Tools",
+    "Accessibility"
+  ],
+
+  "Backend Developer": [
+    "Python",
+    "SQL",
+    "REST APIs",
+    "Git",
+    "Authentication",
+    "Docker",
+    "Testing",
+    "Database Design",
+    "Debugging",
+    "API Security"
+  ],
+
+  "Full Stack Developer": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Git",
+    "REST APIs",
+    "Responsive Design",
+    "Authentication",
+    "Database Design",
+    "Frontend Development",
+    "Backend Development",
+    "Deployment"
+  ],
+
+  "Python Full Stack Developer": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Python",
+    "Flask",
+    "SQL",
+    "PostgreSQL",
+    "REST APIs",
+    "Git",
+    "Authentication",
+    "Deployment"
+  ],
+
+  "MERN Stack Developer": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "REST APIs",
+    "Git",
+    "Authentication",
+    "JWT",
+    "Deployment"
+  ],
+
+  "Java Full Stack Developer": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Java",
+    "OOP",
+    "Spring Boot",
+    "SQL",
+    "MySQL",
+    "REST APIs",
+    "Git",
+    "Authentication",
+    "Deployment"
+  ],
+
+  "Node.js Backend Developer": [
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "REST APIs",
+    "MongoDB",
+    "SQL",
+    "Git",
+    "Authentication",
+    "JWT",
+    "Testing",
+    "API Security",
+    "Deployment"
+  ],
+
+  "Django Backend Developer": [
+    "Python",
+    "Django",
+    "SQL",
+    "PostgreSQL",
+    "Django ORM",
+    "REST APIs",
+    "Git",
+    "Authentication",
+    "Testing",
+    "Deployment"
+  ],
+
+  "Cloud Engineer": [
+    "AWS",
+    "Linux",
+    "Networking",
+    "Docker",
+    "Python",
+    "IAM",
+    "EC2",
+    "S3",
+    "Cloud Security",
+    "Terraform",
+    "Cloud Monitoring"
+  ],
+
+  "DevOps Engineer": [
+    "Linux",
+    "Git",
+    "Docker",
+    "Kubernetes",
+    "CI/CD",
+    "Jenkins",
+    "AWS",
+    "Python",
+    "Terraform",
+    "Monitoring",
+    "Shell Scripting"
+  ],
+
+  "Machine Learning Engineer": [
+    "Python",
+    "NumPy",
+    "Pandas",
+    "Scikit-learn",
+    "Machine Learning",
+    "Deep Learning",
+    "TensorFlow",
+    "PyTorch",
+    "Model Deployment",
+    "Statistics",
+    "Feature Engineering",
+    "MLOps"
+  ],
+
+  "AI Engineer": [
+    "Python",
+    "Machine Learning",
+    "Deep Learning",
+    "NLP",
+    "PyTorch",
+    "TensorFlow",
+    "REST APIs",
+    "LLMs",
+    "Prompt Engineering",
+    "Vector Databases",
+    "RAG",
+    "Model Evaluation"
+  ],
+
+  "Cybersecurity Analyst": [
+    "Networking",
+    "Linux",
+    "Python",
+    "Security Fundamentals",
+    "SIEM",
+    "Vulnerability Assessment",
+    "Incident Response",
+    "Wireshark",
+    "Risk Assessment",
+    "Threat Detection",
+    "Security Monitoring"
+  ],
+
+  "QA Automation Engineer": [
+    "Python",
+    "Selenium",
+    "Testing",
+    "Test Automation",
+    "Pytest",
+    "Git",
+    "REST APIs",
+    "Postman",
+    "Bug Tracking",
+    "SQL",
+    "CI/CD"
+  ],
+
+  "Database Developer": [
+    "SQL",
+    "PostgreSQL",
+    "MySQL",
+    "Database Design",
+    "Normalization",
+    "Stored Procedures",
+    "Indexing",
+    "Query Optimization",
+    "ETL",
+    "Data Modeling",
+    "Database Security"
+  ]
+}
