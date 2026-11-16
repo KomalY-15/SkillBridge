@@ -1,4 +1,8 @@
 
+/* =====================================
+   SKILLBRIDGE - GLOBAL STYLES
+===================================== */
+
 :root {
     --primary: #3158df;
     --dark: #142348;
@@ -18,6 +22,10 @@ body {
     color: #253047;
 }
 
+/* =====================================
+   NAVIGATION
+===================================== */
+
 .navbar {
     background: #172e75 !important;
     padding: 17px 28px;
@@ -28,6 +36,10 @@ body {
     letter-spacing: -0.5px;
 }
 
+/* =====================================
+   HERO SECTION
+===================================== */
+
 .hero {
     padding: 65px 20px 95px;
     background: linear-gradient(
@@ -37,7 +49,7 @@ body {
 }
 
 .hero-tag {
-    background: rgba(255,255,255,0.14);
+    background: rgba(255, 255, 255, 0.14);
     padding: 9px 18px;
     border-radius: 30px;
     font-size: 12px;
@@ -62,6 +74,10 @@ body {
     margin-top: 15px;
 }
 
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
 .main-content {
     max-width: 1100px;
     margin-top: -45px;
@@ -69,11 +85,15 @@ body {
     padding-bottom: 50px;
 }
 
+/* =====================================
+   STATISTICS CARDS
+===================================== */
+
 .stat-card {
     background: white;
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 8px 25px rgba(25,45,90,0.06);
+    box-shadow: 0 8px 25px rgba(25, 45, 90, 0.06);
     border: 1px solid var(--border);
 }
 
@@ -95,13 +115,17 @@ body {
     margin: 0;
 }
 
+/* =====================================
+   APPLICATION CARDS
+===================================== */
+
 .app-card,
 .card {
     background: white;
     padding: 30px;
     border: 1px solid var(--border);
     border-radius: 18px;
-    box-shadow: 0 5px 25px rgba(25,45,90,0.04);
+    box-shadow: 0 5px 25px rgba(25, 45, 90, 0.04);
 }
 
 .section-number {
@@ -123,6 +147,10 @@ body {
     margin-bottom: 25px;
 }
 
+/* =====================================
+   FORM INPUTS
+===================================== */
+
 .form-control,
 .form-select {
     border: 1px solid #dce3f0;
@@ -133,8 +161,12 @@ body {
 .form-control:focus,
 .form-select:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(49,88,223,0.1);
+    box-shadow: 0 0 0 3px rgba(49, 88, 223, 0.1);
 }
+
+/* =====================================
+   SELECTED SKILLS COUNTER
+===================================== */
 
 .selected-counter {
     background: #eef2ff;
@@ -142,6 +174,7 @@ body {
     border-radius: 12px;
     padding: 12px 20px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .selected-counter span {
@@ -153,6 +186,10 @@ body {
 .selected-counter small {
     font-size: 11px;
 }
+
+/* =====================================
+   FILTER BUTTONS
+===================================== */
 
 .filter-bar {
     display: flex;
@@ -168,6 +205,7 @@ body {
     padding: 8px 16px;
     font-size: 13px;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .filter-btn.active,
@@ -176,6 +214,10 @@ body {
     color: white;
     border-color: var(--primary);
 }
+
+/* =====================================
+   SKILL CARDS
+===================================== */
 
 .skill-card {
     display: flex;
@@ -215,6 +257,54 @@ body {
     font-size: 14px;
 }
 
+/* =====================================
+   COMPACT SCROLLABLE SKILLS SECTION
+===================================== */
+
+.skills-scroll-area {
+    max-height: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #f8fafc;
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #f1f5f9;
+}
+
+/* Scrollbar */
+.skills-scroll-area::-webkit-scrollbar {
+    width: 7px;
+}
+
+.skills-scroll-area::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+}
+
+.skills-scroll-area::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+/* Skill cards inside scrollable area */
+.skills-scroll-area .skill-card {
+    min-height: 55px;
+    padding: 12px;
+}
+
+/* Highlight selected skills */
+.skills-scroll-area .skill-card:has(
+    .skill-checkbox:checked
+) {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
 .btn-primary {
     background: var(--primary);
     border-color: var(--primary);
@@ -224,14 +314,19 @@ body {
 
 .btn-primary:hover {
     background: #2447be;
+    border-color: #2447be;
 }
 
 .analyze-btn {
     padding: 18px;
     font-size: 17px;
     font-weight: 700;
-    box-shadow: 0 8px 20px rgba(49,88,223,0.2);
+    box-shadow: 0 8px 20px rgba(49, 88, 223, 0.2);
 }
+
+/* =====================================
+   DASHBOARD
+===================================== */
 
 .badge {
     font-size: 13px;
@@ -243,7 +338,12 @@ body {
     padding: 15px;
 }
 
+/* =====================================
+   RESPONSIVE DESIGN - TABLET
+===================================== */
+
 @media (max-width: 768px) {
+
     .hero {
         padding: 45px 15px 80px;
     }
@@ -259,5 +359,64 @@ body {
 
     .selected-counter {
         padding: 8px 12px;
+    }
+
+    .skills-scroll-area {
+        max-height: 300px;
+    }
+}
+
+/* =====================================
+   RESPONSIVE DESIGN - MOBILE
+===================================== */
+
+@media (max-width: 576px) {
+
+    .hero {
+        padding: 40px 15px 70px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .navbar {
+        padding: 14px 16px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .app-card,
+    .card {
+        padding: 18px;
+    }
+
+    .skills-scroll-area {
+        max-height: 280px;
+        padding: 10px;
+    }
+
+    .skills-scroll-area .skill-card {
+        min-height: 48px;
+    }
+
+    .filter-btn {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    .selected-counter span {
+        font-size: 21px;
+    }
+
+    .analyze-btn {
+        font-size: 15px;
+        padding: 15px;
     }
 }
