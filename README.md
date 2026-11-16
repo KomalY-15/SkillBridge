@@ -1,71 +1,129 @@
-
 # SkillBridge — Skill Gap Analyzer & Career Roadmap Generator
 
-SkillBridge is a Flask-based web application that helps users
-evaluate their skills against different career paths and
-identify areas for improvement.
+A web-based career intelligence platform that helps users assess their technical skills, identify skill gaps, and generate personalized learning roadmaps based on their target career paths.
 
-## Features
+**Live Website:** https://skillbridge-2tu4.onrender.com
 
-- 20 career paths
-- Searchable skill selection
-- Role-based skill matching
-- Interactive analysis dashboard
-- Skill-match percentage and visual charts
-- Personalized learning roadmap
-- Analysis history using SQLite
-- Downloadable PDF analysis reports
-- Responsive user interface
+**GitHub Repository:** https://github.com/KomalY-15/SkillBridge
 
-## Tech Stack
+## About the Project
 
-**Backend:** Python, Flask
+SkillBridge is a full-stack web application developed using Python, Flask, SQLite, HTML, CSS, Bootstrap, and JavaScript.
 
-**Frontend:** HTML, CSS, Bootstrap, JavaScript
+The platform allows users to select their target job role, evaluate their existing skills, and understand which additional skills they should develop.
 
-**Database:** SQLite
+It provides an interactive analysis dashboard, skill-match percentage, learning roadmap, and downloadable PDF report.
 
-**Visualization:** Chart.js
+## Key Features
 
-**PDF Generation:** ReportLab
+- **20 Career Paths:** Explore roles across Data Analytics, Software Development, AI, Cloud, DevOps, Cybersecurity, and more.
+- **Skill Gap Analysis:** Compare selected skills with role-specific skill requirements.
+- **Interactive Dashboard:** Visualize matched and missing skills using Chart.js.
+- **Skill Match Percentage:** Calculate a transparent percentage based on predefined skill lists.
+- **Personalized Learning Roadmap:** Generate learning steps for missing skills.
+- **PDF Report Generation:** Download a detailed skill assessment report.
+- **Analysis History:** Store and view previous assessments using SQLite.
+- **Skill Search and Filters:** Search skills and filter by selected career path.
+- **Responsive Interface:** Supports desktop and mobile devices.
 
-**Deployment:** Render
+## Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Frontend | HTML, CSS, JavaScript, Bootstrap |
+| Backend | Python, Flask |
+| Database | SQLite |
+| Visualization | Chart.js |
+| PDF Generation | ReportLab |
+| Deployment | Render |
+| Version Control | Git, GitHub |
 
 ## How It Works
 
 1. Select a target career role.
-2. Choose your existing skills.
-3. Analyze your skill match.
-4. View matched and missing skills.
-5. Follow the recommended learning roadmap.
-6. Download your PDF report.
+2. Choose the skills you already know.
+3. Click **Analyze My Skills**.
+4. View your skill-match percentage.
+5. Explore matched and missing skills.
+6. Follow the generated learning roadmap.
+7. Download the PDF analysis report.
+8. View previous assessments in Analysis History.
 
-## Run Locally
+## Project Structure
 
-Clone the repository:
+```text
+SkillBridge/
+├── app.py
+├── skills.json
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── templates/
+│   ├── index.html
+│   ├── dashboard.html
+│   └── history.html
+└── static/
+    └── style.css
+```
 
-    git clone https://github.com/YOUR_USERNAME/SkillBridge.git
+The SQLite database is created locally when the application starts.
 
-Install dependencies:
+## Installation and Setup
 
-    pip install -r requirements.txt
+**1. Clone the repository**
 
-Start the application:
+```bash
+git clone https://github.com/KomalY-15/SkillBridge.git
+cd SkillBridge
+```
 
-    python app.py
+**2. Create a virtual environment**
 
-Open:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-    http://127.0.0.1:5001
+**3. Install dependencies**
 
-## Future Improvements
+```bash
+pip install -r requirements.txt
+```
 
-- User authentication
+**4. Run the application**
+
+```bash
+python app.py
+```
+
+**5. Open the application**
+
+Visit http://127.0.0.1:5001 in your browser.
+
+## Live Demo
+
+Try SkillBridge here:
+
+https://skillbridge-2tu4.onrender.com
+
+*Note: The free hosting instance may take some time to start after inactivity. SQLite history may be reset after redeployment or service restart.*
+
+## Future Enhancements
+
+- User registration and authentication
 - Persistent PostgreSQL database
-- Skill equivalence matching
-- Learning resources and course recommendations
-- Progress tracking over time
+- Alternative technology stack recommendations
+- Skill proficiency levels
+- Course and learning resource recommendations
+- Career progress tracking
+- AI-powered learning recommendations
 
 ## Author
 
-Komal Yadav
+**Komal Yadav**
+
+GitHub: https://github.com/KomalY-15
+
+---
+
+*SkillBridge — Discover • Analyze • Improve*

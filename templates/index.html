@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+          content="width=device-width, initial-scale=1.0">
 
     <title>SkillBridge | Career Intelligence</title>
 
@@ -23,25 +24,29 @@
 
 <body>
 
-<!-- Job skills data provided by Flask -->
+<!-- Job Skills Data -->
 <script id="roleSkillsData" type="application/json">
     {{ job_skills | tojson }}
 </script>
 
 <!-- Navigation -->
 <nav class="navbar navbar-dark px-4">
-    <a class="navbar-brand fw-bold" href="/">
+
+    <a class="navbar-brand fw-bold"
+       href="{{ url_for('home') }}">
         ✦ SkillBridge
     </a>
 
-    <a href="/history"
+    <a href="{{ url_for('history') }}"
        class="text-white text-decoration-none">
         Analysis History
     </a>
+
 </nav>
 
 <!-- Hero Section -->
 <section class="hero text-center">
+
     <div class="container">
 
         <span class="hero-tag">
@@ -59,6 +64,7 @@
         </p>
 
     </div>
+
 </section>
 
 <!-- Main Content -->
@@ -94,7 +100,7 @@
     </div>
 
     <!-- Analysis Form -->
-    <form action="/analyze" method="POST">
+    <form action="{{ url_for('analyze') }}" method="POST">
 
         <!-- Career Selection -->
         <div class="app-card mb-4">
@@ -119,9 +125,11 @@
                 required
             >
                 {% for role in roles %}
+
                 <option value="{{ role }}">
                     {{ role }}
                 </option>
+
                 {% endfor %}
             </select>
 
@@ -149,7 +157,7 @@
 
             </div>
 
-            <!-- Search -->
+            <!-- Search Skills -->
             <input
                 type="search"
                 id="skillSearch"
@@ -158,12 +166,12 @@
                 aria-label="Search skills"
             >
 
-            <!-- Filters -->
-            <div class="filter-bar mb-4">
+            <!-- Filter Buttons -->
+            <div class="filter-bar mb-3">
 
                 <button
                     type="button"
-                    class="filter-btn active"
+                    class="filter-btn"
                     data-filter="all"
                 >
                     All Skills
@@ -171,7 +179,7 @@
 
                 <button
                     type="button"
-                    class="filter-btn"
+                    class="filter-btn active"
                     data-filter="role"
                 >
                     Relevant to Role
@@ -187,46 +195,72 @@
 
             </div>
 
-            <!-- Skills Grid -->
-            <div class="row g-3" id="skillsContainer">
+            <p class="text-muted small mb-3">
+                Showing skills for your selected career.
+                Use All Skills to explore more.
+            </p>
 
-                {% for skill in all_skills %}
+            <!-- Scrollable Skills Area -->
+            <div class="skills-scroll-area">
 
-                <div
-                    class="col-md-4 col-sm-6 skill-item"
-                    data-skill="{{ skill }}"
-                >
+                <div class="row g-3" id="skillsContainer">
 
-                    <label class="skill-card">
+                    {% for skill in all_skills %}
 
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="{{ skill }}"
-                            class="skill-checkbox"
-                        >
+                    <div
+                        class="col-md-4 col-sm-6 skill-item"
+                        data-skill="{{ skill }}"
+                    >
 
-                        <span>{{ skill }}</span>
+                        <label class="skill-card">
 
-                    </label>
+                            <input
+                                type="checkbox"
+                                name="skills"
+                                value="{{ skill }}"
+                                class="skill-checkbox"
+                            >
+
+                            <span>{{ skill }}</span>
+
+                        </label>
+
+                    </div>
+
+                    {% endfor %}
 
                 </div>
 
-                {% endfor %}
+                <!-- No Matching Skills -->
+                <p
+                    id="noSkillsMessage"
+                    class="text-muted text-center mt-3 d-none"
+                >
+                    No matching skills found.
+                </p>
 
             </div>
 
-            <!-- No Results -->
-            <p
-                id="noSkillsMessage"
-                class="text-muted mt-3 d-none"
-            >
-                No matching skills found.
-            </p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+
+                <small class="text-muted">
+                    <span id="visibleCount">0</span>
+                    skills displayed
+                </small>
+
+                <button
+                    type="button"
+                    id="clearSkills"
+                    class="btn btn-sm btn-outline-secondary"
+                >
+                    Clear Selection
+                </button>
+
+            </div>
 
         </div>
 
-        <!-- Submit -->
+        <!-- Submit Button -->
         <button
             type="submit"
             class="btn btn-primary btn-lg w-100 analyze-btn"
@@ -259,20 +293,30 @@
     const selectedCount =
         document.getElementById("selectedCount");
 
+    const visibleCount =
+        document.getElementById("visibleCount");
+
     const roleSelect =
         document.getElementById("role");
 
     const filterButtons =
         document.querySelectorAll(".filter-btn");
 
-    // IMPORTANT: Initialize before calling filterSkills()
+    const clearSkillsButton =
+        document.getElementById("clearSkills");
+
+    const skillsScrollArea =
+        document.querySelector(".skills-scroll-area");
+
+    // Read Flask-generated skills data
     const roleSkills = JSON.parse(
         document.getElementById("roleSkillsData").textContent
     );
 
-    let currentFilter = "all";
+    // Show role-specific skills by default
+    let currentFilter = "role";
 
-    // Update selected skills count
+    // Update selected skills counter
     function updateCounter() {
 
         const count = document.querySelectorAll(
@@ -282,7 +326,7 @@
         selectedCount.textContent = count;
     }
 
-    // Filter displayed skills
+    // Filter skills
     function filterSkills() {
 
         const query =
@@ -293,67 +337,69 @@
         const relevantSkills =
             roleSkills[role] || [];
 
-        let visibleCount = 0;
+        let count = 0;
 
         skillItems.forEach(item => {
 
             const skill = item.dataset.skill;
 
             const checkbox =
-                item.querySelector("input");
+                item.querySelector(".skill-checkbox");
 
             const matchesSearch =
                 skill.toLowerCase().includes(query);
 
             let matchesFilter = true;
 
-            // Show skills for selected role
+            // Relevant to selected career
             if (currentFilter === "role") {
 
                 matchesFilter =
                     relevantSkills.includes(skill);
+
             }
 
-            // Show selected skills
+            // Only checked skills
             if (currentFilter === "selected") {
 
                 matchesFilter = checkbox.checked;
+
             }
 
-            const visible =
+            const showSkill =
                 matchesSearch && matchesFilter;
 
             item.classList.toggle(
                 "d-none",
-                !visible
+                !showSkill
             );
 
-            if (visible) {
-                visibleCount++;
+            if (showSkill) {
+                count++;
             }
 
         });
 
-        // Show message if nothing matches
+        // Update displayed count
+        visibleCount.textContent = count;
+
+        // Show empty message
         document.getElementById("noSkillsMessage")
             .classList.toggle(
                 "d-none",
-                visibleCount > 0
+                count > 0
             );
     }
 
     // Handle skill selection
     checkboxes.forEach(checkbox => {
 
-        checkbox.addEventListener(
-            "change",
-            () => {
+        checkbox.addEventListener("change", () => {
 
-                updateCounter();
-                filterSkills();
+            updateCounter();
+            filterSkills();
 
-            }
-        );
+        });
 
     });
 
@@ -373,6 +419,8 @@
 
             filterSkills();
 
+            skillsScrollArea.scrollTop = 0;
+
         });
 
     });
@@ -383,13 +431,28 @@
         filterSkills
     );
 
-    // Change job role
-    roleSelect.addEventListener(
-        "change",
-        filterSkills
-    );
+    // Change selected career
+    roleSelect.addEventListener("change", () => {
 
-    // Initialize application
+        filterSkills();
+
+        skillsScrollArea.scrollTop = 0;
+
+    });
+
+    // Clear selected skills
+    clearSkillsButton.addEventListener("click", () => {
+
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        updateCounter();
+        filterSkills();
+
+    });
+
+    // Initialize
     updateCounter();
     filterSkills();
 

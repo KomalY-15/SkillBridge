@@ -1,10 +1,44 @@
 
+# Python virtual environments
 venv/
 .venv/
+env/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Environment variables and secrets
 .env
-.DS_Store
-skillbridge.db
+.env.*
+!.env.example
+
+# SQLite database files
 *.db
+*.sqlite
+*.sqlite3
+
+# macOS files
+.DS_Store
+
+# VS Code settings
 .vscode/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
